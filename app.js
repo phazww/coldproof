@@ -12,7 +12,7 @@ const VERDICT = {
 
 // What the model is asked to find, and how each item is reported.
 const ELEMENTS = {
-  sender: { field: "sender_identified", quote: "sender_quote", label: "Says who is writing", missing: "The email does not say clearly who is writing and for which company.", fix: "state the sender's full name and company" },
+  sender: { field: null, quote: null, label: "Says who is writing", missing: "The email does not say clearly who is writing and for which company.", fix: "state the sender's full name and company" },
   optout: { field: "opt_out_present", quote: "opt_out_quote", label: "Gives a way to say stop", missing: "There is no line telling the reader how to refuse further emails.", fix: "add one plain sentence telling the reader how to stop further emails, for example by replying \"stop\"" },
   postal: { field: "postal_address_present", quote: "postal_quote", label: "Has a physical postal address", missing: "There is no postal address of the sender.", fix: "add the sender's physical postal address in the signature" },
   adlabel: { field: "clearly_commercial", quote: "commercial_quote", label: "Is plainly a commercial offer", missing: "It is not plain that this is a sales message.", fix: "make it plain in the first lines that this is a commercial offer" },
@@ -23,8 +23,8 @@ const HYGIENE = ["sender", "optout"];
 
 // Only models that were tested on the sample drafts are listed.
 const MODELS = [
-  { id: "Qwen3.5-2B-q4f16_1-MLC", label: "Qwen 3.5 2B · about 1 GB, downloaded once" },
-  { id: "gemma-4-E2B-it-q4f16_1-MLC", label: "Gemma 4 E2B · larger download, a little slower" }
+  { id: "gemma-4-E2B-it-q4f16_1-MLC", label: "Gemma 4 E2B · most careful, larger download" },
+  { id: "Qwen3.5-2B-q4f16_1-MLC", label: "Qwen 3.5 2B · about 1 GB, quicker to get, makes more mistakes" }
 ];
 
 function track(name) {
@@ -85,7 +85,7 @@ async function ask(eng, messages, opts) {
 const SCHEMA = {
   type: "object",
   properties: {
-    sender_identified: { type: "boolean" }, sender_quote: { type: "string" },
+    sender_name: { type: "string" }, sender_company: { type: "string" },
     opt_out_present: { type: "boolean" }, opt_out_quote: { type: "string" },
     postal_address_present: { type: "boolean" }, postal_quote: { type: "string" },
     clearly_commercial: { type: "boolean" }, commercial_quote: { type: "string" },
@@ -93,7 +93,7 @@ const SCHEMA = {
     relevant_to_role: { type: "string", enum: ["yes", "no", "unknown"] },
     offer: { type: "string" }
   },
-  required: ["sender_identified", "sender_quote", "opt_out_present", "opt_out_quote", "postal_address_present", "postal_quote", "clearly_commercial", "commercial_quote", "language", "relevant_to_role", "offer"]
+  required: ["sender_name", "sender_company", "opt_out_present", "opt_out_quote", "postal_address_present", "postal_quote", "clearly_commercial", "commercial_quote", "language", "relevant_to_role", "offer"]
 };
 
 function extractPrompt(subject, body, role) {
@@ -107,8 +107,8 @@ ${body}
 """
 
 Answer with one JSON object:
-- sender_identified: true only if the email gives the sender's name AND the company they write for.
-- sender_quote: the exact words from the email that give the company name, or "".
+- sender_name: the sender's own name exactly as written in the email, or "".
+- sender_company: the name of the company the sender writes for, exactly as written in the email, or "" if no company name appears. A person's name is not a company.
 - opt_out_present: true only if the email tells the reader how to stop getting further emails (unsubscribe, reply stop, opt out).
 - opt_out_quote: the exact words that do this, or "".
 - postal_address_present: true only if a physical postal address (street or P.O. box and city) appears.
@@ -127,6 +127,15 @@ function quoteFound(quote, text) {
   return q.length >= 3 && norm(text).includes(q);
 }
 
+// Second line of defence for the two items that matter most. A quote that is in the draft
+// still has to look like the thing it claims to be.
+const STOP_CUES = /(unsubscrib|opt[\s-]?out|\bstop\b|stopp|remove (you|me)|no longer|not (hear|receive|want|wish)|rather not|d[ée]sabonn|d[ée]sinscri|ne (plus|souhaitez)|abmelden|abbestell|keine weiteren|austragen|\bbaja\b|cancelar|dejar de recibir|disiscri|cancella|non ricevere|uitschrijven|afmelden|geen berichten|avregistrer|avsluta|inte vill|afmeld|ikke ønsker|meld deg av|peruuta|en[äa]{2} viestej|wypis|rezygn|nie chc|odhl[áa]s|nep[řr]ejete|n[ãa]o receber|remover)/i;
+function looksRight(key, quote) {
+  if (key === "optout") return STOP_CUES.test(quote);
+  if (key === "postal") return /\d/.test(quote);
+  return true;
+}
+
 function evaluate(found, c, subject, body) {
   const text = subject + "\n" + body;
   return needsFor(c).map((key) => {
@@ -139,10 +148,18 @@ function evaluate(found, c, subject, body) {
       // decided by the page itself: a first email must not pose as a reply, and it needs a subject
       pass = subject.trim().length > 0 && !/^\s*(re|fwd?)\s*:/i.test(subject);
       if (!pass) note = subject.trim() ? "The subject starts with Re: or Fwd:, but this is a first email." : "There is no subject line.";
+    } else if (key === "sender") {
+      // name and company are asked for separately, and both must really be in the draft
+      const name = found.sender_name || "", company = found.sender_company || "";
+      const hasCompany = quoteFound(company, text) && norm(company) !== norm(name);
+      pass = quoteFound(name, text) && hasCompany;
+      quote = pass ? name + ", " + company : "";
+      if (!pass && quoteFound(name, text)) note = "There is a name but no company. The reader cannot tell who is behind the email.";
     } else {
       pass = !!found[el.field];
       quote = found[el.quote] || "";
       if (pass && !quoteFound(quote, text)) { pass = false; note = "The model said yes but could not point to the words, so this is counted as missing."; }
+      else if (pass && !looksRight(key, quote)) { pass = false; note = "The model pointed to a sentence that does not do this, so it is counted as missing."; }
     }
     return { key, el, state: pass ? "pass" : "fail", quote: pass ? quote : "", note };
   });
