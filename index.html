@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coldproof: check a cold email against the recipient country's law, on your own machine</title>
+<meta name="description" content="Paste a cold email draft and pick the recipient's country. An open-weight model running in your browser checks it against that country's rules, shows what is missing and writes the fixed version. Nothing leaves your machine.">
+<link rel="canonical" href="https://phazww.github.io/coldproof/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coldproof: check a cold email against the recipient country's law">
+<meta property="og:description" content="An open-weight model in your browser checks your draft against the law of the recipient's country. Nothing leaves your machine.">
+<meta property="og:url" content="https://phazww.github.io/coldproof/">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./">Coldproof <span>cold email, checked against the law</span></a>
+  <nav class="site"><a href="#how">How it works</a><a href="#teams">Teams</a></nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1>Is this cold email legal where it is going?</h1>
+  <p class="lede">Pick the recipient's country and paste your draft. An open-weight model running in your browser reads it, the page compares what it found with that country's rules, and you get the missing pieces and a fixed version. Your draft never leaves this page.</p>
+</div>
+
+<div class="steps">
+  <div class="step">
+    <h2>Who are you writing to?</h2>
+    <div class="fields">
+      <div class="field"><label for="country">Recipient's country</label><select id="country"></select></div>
+      <div class="field"><label for="atype">Kind of address</label>
+        <select id="atype">
+          <option value="named">A named person at a company (jane.doe@company)</option>
+          <option value="generic">A generic company address (info@company)</option>
+          <option value="personal">A sole trader or personal mailbox (gmail)</option>
+        </select></div>
+    </div>
+    <div id="legal"></div>
+  </div>
+
+  <div class="step" id="draft-step">
+    <h2>Your draft</h2>
+    <div class="fields">
+      <div class="field full"><label for="subject">Subject line</label><input type="text" id="subject" placeholder="Quick question about your onboarding emails"></div>
+      <div class="field full"><label for="body">Email text</label><textarea id="body" spellcheck="false" placeholder="Paste the email exactly as you would send it."></textarea></div>
+      <div class="field"><label for="role">Recipient's job, if you know it (optional)</label><input type="text" id="role" placeholder="Head of Sales"></div>
+      <div class="field"><label for="model">Model</label><select id="model"></select></div>
+    </div>
+    <div class="row">
+      <button id="run">Check my draft</button>
+      <button id="sample" class="ghost">Try a sample</button>
+    </div>
+    <div class="engine" id="engine"></div>
+    <div class="bar" id="bar"><i></i></div>
+  </div>
+
+  <div class="step" id="result-step" hidden>
+    <h2>What the law wants from this email</h2>
+    <div id="result"></div>
+  </div>
+</div>
+
+<section id="how">
+  <h2>How it works</h2>
+  <ul class="method">
+    <li>The rules for 20 countries come from the text of each law or the regulator's own guidance, checked on 10 and 11 October 2026. Every verdict links to its source.</li>
+    <li>The model is open-weight and runs on your own graphics card through WebGPU. The first check downloads it once, then it is cached. There is no server and no API key.</li>
+    <li>The model has one job: it reads your draft and reports what it contains, quoting the exact words it found. The page then checks that each quote really is in your text. If the model says yes but cannot point to the words, that counts as missing.</li>
+    <li>The law is not left to the model. Which elements are required comes from the checked rules, and the lines added to the fixed version are fixed wording in 13 languages, written by hand.</li>
+    <li>Where a country requires consent before the first email, the page says so and does not offer a rewrite. No wording fixes that.</li>
+    <li>This is a research tool, not legal advice. Data protection law applies separately whenever an address identifies a person.</li>
+  </ul>
+</section>
+
+<section id="teams">
+  <h2>For teams</h2>
+  <p class="sub">A single draft is free. Teams usually need the same check on every sequence before it goes out.</p>
+  <div class="card offer">
+    <div class="offer-main">
+      <ul class="must">
+        <li>Check a whole sequence and every country in the lead list in one run</li>
+        <li>A shared record of what was checked and when, to show a client or a manager</li>
+        <li>Runs on your own machines, so prospect data stays in the company</li>
+      </ul>
+    </div>
+    <div class="offer-side">
+      <div class="price">$19 <span>per seat, per month</span></div>
+      <button id="want">I want this</button>
+      <p class="privacy" id="want-note">Not built yet. The button only tells me someone is interested. Nothing is charged and nothing is collected.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <p>Research summary, not legal advice. Rules are those of the recipient's country and cover the first unsolicited marketing email to a business recipient.</p>
+  <p>Made by <a href="https://x.com/phaz_dev" rel="noopener">@phaz_dev</a>. Visits are counted with GoatCounter, without cookies. Drafts are never sent anywhere.</p>
+</footer>
+</div>
+<script src="rules.js"></script>
+<script type="module" src="app.js"></script>
+<script data-goatcounter="https://phaz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
