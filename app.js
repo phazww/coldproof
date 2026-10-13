@@ -23,7 +23,8 @@ const HYGIENE = ["sender", "optout"];
 
 // Only models that were tested on the sample drafts are listed.
 const MODELS = [
-  { id: "Qwen3.5-2B-q4f16_1-MLC", label: "Qwen 3.5 2B · about 1 GB, downloaded once" }
+  { id: "Qwen3.5-2B-q4f16_1-MLC", label: "Qwen 3.5 2B · about 1 GB, downloaded once" },
+  { id: "gemma-4-E2B-it-q4f16_1-MLC", label: "Gemma 4 E2B · larger download, a little slower" }
 ];
 
 function track(name) {

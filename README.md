@@ -8,6 +8,7 @@ Live: https://phazww.github.io/coldproof/
 
 - `rules.js`: per-country rules for the first unsolicited marketing email to a business recipient, each with its source. The research comes from my earlier project [can-i-cold-email](https://github.com/phazww/can-i-cold-email), checked against the law or the regulator on 10 and 11 October 2026.
 - `app.js`: loads the model with [WebLLM](https://github.com/mlc-ai/web-llm), asks it for a JSON report with quotes, verifies that every quote is really in the draft, and assembles the fixed version from hand-written wording in 13 languages.
+- Two open-weight models to choose from, both tested on the same drafts: Qwen 3.5 2B and Gemma 4 E2B.
 - No server, no API key, no build step.
 
 The model reads. It does not decide what the law requires and it does not write the legal lines.
