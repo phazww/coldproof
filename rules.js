@@ -264,6 +264,27 @@ window.COUNTRIES = [
     "checked": "2026-10-14"
   },
   {
+    "code": "MT",
+    "name": "Malta",
+    "lang": "English",
+    "named": "consent",
+    "generic": "consent",
+    "personal": "consent",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Regulation 9 of S.L. 586.01 bans unsolicited marketing email to a subscriber or user, whether a natural or a legal person, unless they gave prior consent in writing.",
+    "must": [
+      "Get prior written consent before the first email, also from companies",
+      "Do not disguise or conceal who the email is from, and give a valid address for asking you to stop",
+      "Existing customers: allowed for your own similar products if they could object free of charge at collection and in every message"
+    ],
+    "source": "Processing of Personal Data (Electronic Communications Sector) Regulations, S.L. 586.01, regulation 9 (Legislation Malta)",
+    "url": "https://legislation.mt/eli/sl/586.1/eng",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "NL",
     "name": "Netherlands",
     "lang": "Dutch",
