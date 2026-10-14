@@ -34,6 +34,9 @@ function track(name) {
 // ---------- step 1: the legal verdict, from the checked rules ----------
 $("country").innerHTML = C.map((c) => `<option value="${c.code}">${esc(c.name)}</option>`).join("");
 $("country").value = "US";
+// Links from the country pages of can-i-cold-email open with ?country=XX.
+const askedCountry = (new URLSearchParams(location.search).get("country") || "").toUpperCase();
+if (byCode[askedCountry]) $("country").value = askedCountry;
 $("model").innerHTML = MODELS.map((m) => `<option value="${m.id}">${esc(m.label)}</option>`).join("");
 
 function current() {
