@@ -52,7 +52,7 @@ function renderLegal() {
       <p>${v.line}</p>
       <p>${esc(c.rule)}</p>
       <p class="note">${c.needs.length ? "The email itself must" : "No content rules were verified for this country, so the draft is checked for the basics. The email should"}: ${needs.map((k) => ELEMENTS[k].label.toLowerCase()).join(", ")}.</p>
-      <p class="src"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.source)}</a> · checked ${window.RULES_CHECKED}</p>
+      <p class="src"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.source)}</a> · checked ${esc(c.checked || window.RULES_CHECKED)}</p>
     </div>`;
 }
 $("country").addEventListener("change", renderLegal);
