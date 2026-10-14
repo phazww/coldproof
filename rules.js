@@ -264,6 +264,27 @@ window.COUNTRIES = [
     "checked": "2026-10-14"
   },
   {
+    "code": "LU",
+    "name": "Luxembourg",
+    "lang": "French",
+    "named": "unknown",
+    "generic": "ok",
+    "personal": "consent",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Article 11 of the amended law of 30 May 2005 requires prior consent for marketing email, but paragraph 5 limits that requirement to subscribers who are natural persons. Writing to a company does not need consent. Every message must show who it is from and give a valid address for asking you to stop.",
+    "must": [
+      "Do not disguise or conceal who the email is from",
+      "Give a valid address where the recipient can ask you to stop, also when emailing a company",
+      "Existing customers: allowed for your own similar products if they could object free of charge at collection and in every message"
+    ],
+    "source": "Loi modifiée du 30 mai 2005 (vie privée, communications électroniques), article 11 (Legilux, consolidated)",
+    "url": "https://legilux.public.lu/eli/etat/leg/loi/2005/05/30/n4/consolide/20110901",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "MT",
     "name": "Malta",
     "lang": "English",
