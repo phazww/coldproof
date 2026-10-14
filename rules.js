@@ -347,6 +347,25 @@ window.COUNTRIES = [
     "checked": "2026-10-14"
   },
   {
+    "code": "LI",
+    "name": "Liechtenstein",
+    "lang": "German",
+    "named": "consent",
+    "generic": "consent",
+    "personal": "consent",
+    "needs": [],
+    "rule": "Article 50(1) of the Communications Act (KomG) bans direct marketing by email unless the recipient gave prior express consent or is an existing customer who did not object. The rule speaks of the recipient and does not exempt companies. Article 50(2) allows one email asking for consent, if it says clearly and prominently that the recipient can refuse further messages and withdraw consent at any time.",
+    "must": [
+      "Get express consent before the first marketing email, also from companies",
+      "You may send one email asking for consent, stating clearly that the recipient can refuse further messages and withdraw consent at any time",
+      "Do not email addresses that were generated at random or whose owner has refused",
+      "A permitted commercial email must be clearly recognisable as such when it arrives (E-Commerce Act, art. 7)"
+    ],
+    "source": "Kommunikationsgesetz (KomG), LGBl. 2006 Nr. 91, Art. 50 (gesetze.li, consolidated)",
+    "url": "https://www.gesetze.li/konso/pdf/2006091000",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "LU",
     "name": "Luxembourg",
     "lang": "French",
