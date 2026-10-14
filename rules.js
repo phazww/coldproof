@@ -64,6 +64,29 @@ window.COUNTRIES = [
     "checked": "2026-10-10"
   },
   {
+    "code": "BG",
+    "name": "Bulgaria",
+    "lang": "Bulgarian",
+    "named": "cond",
+    "generic": "cond",
+    "personal": "cond",
+    "needs": [
+      "adlabel",
+      "sender",
+      "optout"
+    ],
+    "rule": "Article 261(1) of the Electronic Communications Act requires prior consent for marketing email, but since 2021 the Act defines the protected \"consumer\" as a natural person acting outside their business. For companies, article 6 of the E-Commerce Act applies: you may email them unless their address is in the opt-out register kept by the Commission for Consumer Protection, and an unsolicited commercial email must be recognisable as unsolicited as soon as it arrives.",
+    "must": [
+      "Check every company address against the Commission for Consumer Protection's opt-out register before sending",
+      "Make the email recognisable as an unsolicited commercial message as soon as it arrives",
+      "Show who you are and give a valid address where the recipient can ask you to stop",
+      "Private individuals acting as consumers need prior consent"
+    ],
+    "source": "Electronic Communications Act (ЗЕС), art. 261 and § 1 item 49, consolidated text published by the Communications Regulation Commission (CRC)",
+    "url": "https://crc.bg/files/2025%20%D0%9F%D0%A0%D0%90%D0%92%D0%9D%D0%90/%D0%97%D0%95%D0%A1%20-%2025.11.2025%20%D0%B3.%20__%D0%91%D0%93__pdfCielaFile.pdf",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "CA",
     "name": "Canada",
     "lang": "English",
