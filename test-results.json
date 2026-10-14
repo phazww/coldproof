@@ -1,0 +1,1037 @@
+{
+  "date": "2026-10-14",
+  "setup": "Apple Silicon Mac, Chromium with WebGPU, WebLLM, temperature 0",
+  "note": "Each draft is checked against the five US requirements so every element is tested in every language. s = sender name and company, o = a way to say stop, p = postal address, c = plainly commercial.",
+  "models": {
+    "gemma-4-E2B-it-q4f16_1-MLC": {
+      "avg_seconds": 10.5,
+      "results": [
+        {
+          "id": "en-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-no-address",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-trap-unsubscribe",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-ps-stop",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-team-only",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-po-box",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-wont-follow-up",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-vague-no-offer",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 0,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 0,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-city-only",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-unsubscribe-link-text",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-relevance-stop",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-name-company-first-line",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "fr-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fr"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fr"
+          }
+        },
+        {
+          "id": "fr-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "fr"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "fr"
+          }
+        },
+        {
+          "id": "de-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "de"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "de"
+          }
+        },
+        {
+          "id": "de-name-only",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "de"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "de"
+          }
+        },
+        {
+          "id": "es-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "es"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "es"
+          }
+        },
+        {
+          "id": "es-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "es"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "es"
+          }
+        },
+        {
+          "id": "it-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "it"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "it"
+          }
+        },
+        {
+          "id": "nl-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "nl"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "nl"
+          }
+        },
+        {
+          "id": "sv-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "sv"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "sv"
+          }
+        },
+        {
+          "id": "da-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "da"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "da"
+          }
+        },
+        {
+          "id": "no-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "no"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "no"
+          }
+        },
+        {
+          "id": "fi-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fi"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fi"
+          }
+        },
+        {
+          "id": "pl-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "pl"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "pl"
+          }
+        },
+        {
+          "id": "cs-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "cs"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "cs"
+          }
+        },
+        {
+          "id": "pt-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "pt"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "pt"
+          }
+        },
+        {
+          "id": "en-fwd-subject",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-address-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-optout-no-company",
+          "expect": {
+            "s": 0,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        }
+      ]
+    },
+    "Qwen3.5-2B-q4f16_1-MLC": {
+      "avg_seconds": 7.4,
+      "results": [
+        {
+          "id": "en-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-no-address",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-trap-unsubscribe",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-ps-stop",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-team-only",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-po-box",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-wont-follow-up",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-vague-no-offer",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 0,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-city-only",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-unsubscribe-link-text",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-relevance-stop",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-name-company-first-line",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "fr-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fr"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fr"
+          }
+        },
+        {
+          "id": "fr-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "fr"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 0,
+            "lang": "fr"
+          }
+        },
+        {
+          "id": "de-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "de"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "de"
+          }
+        },
+        {
+          "id": "de-name-only",
+          "expect": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "de"
+          },
+          "got": {
+            "s": 0,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "de"
+          }
+        },
+        {
+          "id": "es-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "es"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "es"
+          }
+        },
+        {
+          "id": "es-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "es"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "es"
+          }
+        },
+        {
+          "id": "it-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "it"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "it"
+          }
+        },
+        {
+          "id": "nl-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "nl"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "nl"
+          }
+        },
+        {
+          "id": "sv-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "sv"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "sv"
+          }
+        },
+        {
+          "id": "da-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "da"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "da"
+          }
+        },
+        {
+          "id": "no-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "no"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "no"
+          }
+        },
+        {
+          "id": "fi-full",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fi"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "fi"
+          }
+        },
+        {
+          "id": "pl-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "pl"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "pl"
+          }
+        },
+        {
+          "id": "cs-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "cs"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 0,
+            "c": 1,
+            "lang": "cs"
+          }
+        },
+        {
+          "id": "pt-optout",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "pt"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "pt"
+          }
+        },
+        {
+          "id": "en-fwd-subject",
+          "expect": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 1,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-address-no-optout",
+          "expect": {
+            "s": 1,
+            "o": 0,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 1,
+            "o": 0,
+            "p": 1,
+            "c": 1,
+            "lang": "en"
+          }
+        },
+        {
+          "id": "en-optout-no-company",
+          "expect": {
+            "s": 0,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          },
+          "got": {
+            "s": 0,
+            "o": 1,
+            "p": 0,
+            "c": 1,
+            "lang": "en"
+          }
+        }
+      ]
+    }
+  }
+}

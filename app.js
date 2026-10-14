@@ -23,8 +23,8 @@ const HYGIENE = ["sender", "optout"];
 
 // Only models that were tested on the sample drafts are listed.
 const MODELS = [
-  { id: "gemma-4-E2B-it-q4f16_1-MLC", label: "Gemma 4 E2B · most careful, larger download" },
-  { id: "Qwen3.5-2B-q4f16_1-MLC", label: "Qwen 3.5 2B · about 1 GB, quicker to get, makes more mistakes" }
+  { id: "gemma-4-E2B-it-q4f16_1-MLC", label: "Gemma 4 E2B · 30 of 30 test drafts right, larger download" },
+  { id: "Qwen3.5-2B-q4f16_1-MLC", label: "Qwen 3.5 2B · 26 of 30 test drafts right, about 1 GB" }
 ];
 
 function track(name) {
@@ -129,7 +129,7 @@ function quoteFound(quote, text) {
 
 // Second line of defence for the two items that matter most. A quote that is in the draft
 // still has to look like the thing it claims to be.
-const STOP_CUES = /(unsubscrib|opt[\s-]?out|\bstop\b|stopp|remove (you|me)|no longer|not (hear|receive|want|wish)|rather not|d[ée]sabonn|d[ée]sinscri|ne (plus|souhaitez)|abmelden|abbestell|keine weiteren|austragen|\bbaja\b|cancelar|dejar de recibir|disiscri|cancella|non ricevere|uitschrijven|afmelden|geen berichten|avregistrer|avsluta|inte vill|afmeld|ikke ønsker|meld deg av|peruuta|en[äa]{2} viestej|wypis|rezygn|nie chc|odhl[áa]s|nep[řr]ejete|n[ãa]o receber|remover)/i;
+const STOP_CUES = /(unsubscrib|opt[\s-]?out|\bstop\b|stopp|remove (you|me)|no longer|not (hear|receive|want|wish)|rather not|won'?t (follow up|email|write|contact|reach out|bother)|will not (follow up|email|write|contact|reach out)|reply[^.]{0,25}no thanks|vill (du|ni) inte|inte få fler|d[ée]sabonn|d[ée]sinscri|ne (plus|souhaitez)|abmelden|abbestell|keine weiteren|austragen|\bbaja\b|cancelar|dejar de recibir|disiscri|cancella|non ricevere|uitschrijven|afmelden|geen berichten|avregistrer|avsluta|inte vill|afmeld|ikke ønsker|meld deg av|peruuta|en[äa]{2} viestej|wypis|rezygn|nie chc|odhl[áa]s|nep[řr]ejete|n[ãa]o receber|remover)/i;
 function looksRight(key, quote) {
   if (key === "optout") return STOP_CUES.test(quote);
   if (key === "postal") return /\d/.test(quote);
@@ -297,5 +297,29 @@ $("want").addEventListener("click", () => {
 });
 if (!navigator.gpu) status("This browser has no WebGPU, so the model cannot run here. You can still see the legal verdict above, or press \"See a recorded example\".");
 
+// Test set: open the page with #tests to run all 30 drafts in this browser.
+if (location.hash === "#tests") {
+  const sec = document.createElement("section");
+  sec.id = "tests";
+  sec.innerHTML = `<h2>Run the test set</h2><p class="sub">30 drafts in 13 languages with known answers. See <a href="https://github.com/phazww/coldproof/blob/main/TESTS.md">TESTS.md</a>.</p>
+    <div class="row"><button id="tests-run">Run with the selected model</button></div><div class="engine" id="tests-status"></div><div id="tests-out"></div>`;
+  document.querySelector("main").prepend(sec);
+  const s = document.createElement("script");
+  s.src = "tests.js";
+  document.body.appendChild(s);
+  $("tests-run").addEventListener("click", async () => {
+    $("tests-run").disabled = true;
+    const label = { s: "Sender", o: "Stop", p: "Address", c: "Commercial" };
+    try {
+      const rows = await window.runColdproofTests($("model").value, (i, n) => { $("tests-status").textContent = `Draft ${i} of ${n}`; });
+      const keys = Object.keys(label);
+      const ok = (r) => keys.every((k) => r.got[k] === r.exp[k]) && r.got.lang === r.exp.lang;
+      $("tests-status").textContent = `${rows.filter(ok).length} of ${rows.length} drafts fully right`;
+      $("tests-out").innerHTML = `<div class="tablewrap"><table><thead><tr><th>Draft</th>${keys.map((k) => `<th>${label[k]}</th>`).join("")}<th>Language</th></tr></thead><tbody>${rows.map((r) => `<tr><td class="email">${esc(r.id)}</td>${keys.map((k) => `<td>${r.got[k] === r.exp[k] ? "✓" : "✕ expected " + (r.exp[k] ? "yes" : "no")}</td>`).join("")}<td>${r.got.lang === r.exp.lang ? "✓" : "✕ " + esc(r.got.lang)}</td></tr>`).join("")}</tbody></table></div>`;
+    } catch (e) { $("tests-status").textContent = String((e && e.message) || e); }
+    $("tests-run").disabled = false;
+  });
+}
+
 // exposed for testing in the console
-window.coldproof = { extractPrompt, evaluate, assemble, SCHEMA, PHRASES };
+window.coldproof = { extractPrompt, evaluate, assemble, SCHEMA, PHRASES, getEngine, ask };
