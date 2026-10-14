@@ -406,6 +406,28 @@ window.COUNTRIES = [
     "checked": "2026-10-14"
   },
   {
+    "code": "SI",
+    "name": "Slovenia",
+    "lang": "Slovenian",
+    "named": "cond",
+    "generic": "ok",
+    "personal": "consent",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Article 226 of the Electronic Communications Act (ZEKom-2) requires prior consent for marketing email, but paragraph 4 limits that to subscribers who are natural persons. Paragraph 6 allows email to a person's address when the company has published it as its own contact address. Every email must show who it is from and give a valid address for asking you to stop.",
+    "must": [
+      "Write to a named employee only if the company published that address as its contact address",
+      "Do not hide or disguise who the email is from",
+      "Give a valid address where the recipient can ask you to stop",
+      "Existing customers: allowed for your own similar products if they could refuse free of charge at collection and in every message"
+    ],
+    "source": "Zakon o elektronskih komunikacijah (ZEKom-2), article 226 (PISRS, consolidated text no. 2)",
+    "url": "https://pisrs.si/api/datoteke/integracije/358466648",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "ES",
     "name": "Spain",
     "lang": "Spanish",
