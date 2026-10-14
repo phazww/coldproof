@@ -107,6 +107,27 @@ window.COUNTRIES = [
     "checked": "2026-10-14"
   },
   {
+    "code": "CY",
+    "name": "Cyprus",
+    "lang": "Greek",
+    "named": "unknown",
+    "generic": "unknown",
+    "personal": "consent",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Section 106(1) of Law 112(I)/2004 allows marketing email only to subscribers or users who gave prior consent, and section 106(5) limits that rule to subscribers who are natural persons. For companies, the same paragraph refers to a separate 2005 Order protecting the legitimate interests of legal persons, which I could not read, so emails to companies are marked as not verified. Every email must show who it is from and give a valid address for asking you to stop.",
+    "must": [
+      "Do not hide who the email is from or on whose behalf it is sent",
+      "Give a valid address where the recipient can ask you to stop",
+      "Existing customers: allowed for your own similar products if they could object free of charge at collection and in every message"
+    ],
+    "source": "Law 112(I)/2004 on electronic communications and postal services, section 106 (CyLaw, consolidated)",
+    "url": "http://www.cylaw.org/nomoi/enop/non-ind/2004_1_112/full.html",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "CZ",
     "name": "Czech Republic",
     "lang": "Czech",
