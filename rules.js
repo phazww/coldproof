@@ -228,6 +228,24 @@ window.COUNTRIES = [
     "checked": "2026-10-10"
   },
   {
+    "code": "GR",
+    "name": "Greece",
+    "lang": "Greek",
+    "named": "consent",
+    "generic": "consent",
+    "personal": "consent",
+    "needs": [],
+    "rule": "Article 11(1) of Law 3471/2006 allows unsolicited marketing email only with the subscriber's prior explicit consent, and Article 11(5) says the same rules apply to subscribers who are legal persons. Companies are protected the same way as individuals.",
+    "must": [
+      "Get explicit consent before the first email, also from companies",
+      "Show clearly who the email is from and give a valid address where the recipient can ask you to stop",
+      "Existing customers: allowed for your own similar products if they could object free of charge at collection and in every message"
+    ],
+    "source": "Law 3471/2006, article 11, consolidated Greek text (e-nomothesia.gr)",
+    "url": "https://www.e-nomothesia.gr/kat-dedomena-prosopikou-kharaktera/n-3471-2006.html",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "IE",
     "name": "Ireland",
     "lang": "English",
