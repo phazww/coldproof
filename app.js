@@ -217,6 +217,7 @@ async function run() {
     const raw = await ask(eng, [{ role: "user", content: extractPrompt(subject, body, role) }], { response_format: { type: "json_object", schema: JSON.stringify(SCHEMA) }, max_tokens: 500 });
     let found;
     try { found = JSON.parse(raw); } catch (e) { throw new Error("The model returned something that is not valid JSON. Try again or pick the other model."); }
+    window.coldproof.last = { model: $("model").value, found };
     const checks = evaluate(found, c, subject, body);
     const fails = checks.filter((x) => x.state === "fail");
     const fixable = fails.filter((f) => f.key !== "relevance");
@@ -229,11 +230,11 @@ async function run() {
   } finally { btn.disabled = false; }
 }
 
-function render(c, verdict, checks, fails, fixed, found) {
+function render(c, verdict, checks, fails, fixed, found, banner) {
   const judged = checks.filter((x) => x.state !== "info");
   const passed = judged.filter((x) => x.state === "pass").length;
   const mark = { pass: "✓", fail: "✕", info: "?" };
-  let html = "";
+  let html = banner ? `<div class="legal"><p>${esc(banner)}</p></div>` : "";
   if (verdict === "consent") {
     html += `<div class="legal consent"><div class="head"><span class="chip consent">Do not send without consent</span><span>${esc(c.name)}</span></div>
       <p>The checklist below still applies once you have consent or an existing customer relationship, but fixing the wording does not make a first email lawful here.</p></div>`;
@@ -261,20 +262,40 @@ function render(c, verdict, checks, fails, fixed, found) {
   });
 }
 
-$("run").addEventListener("click", run);
-$("sample").addEventListener("click", () => {
+// A real answer from Gemma 4 E2B on the sample draft, saved on 14 October 2026, so the result can be
+// seen on a phone or without downloading a model. It goes through the same checks as a live run.
+const RECORDED = {
+  model: "Gemma 4 E2B", date: "14 October 2026",
+  found: { sender_name: "Tom", sender_company: "", opt_out_present: false, opt_out_quote: "", postal_address_present: false, postal_quote: "", clearly_commercial: true, commercial_quote: "We clean lead lists before every campaign so that reps stop wasting calls on dead contacts.", language: "en", relevant_to_role: "yes", offer: "cleaning lead lists before campaigns" }
+};
+function fillSample() {
   $("subject").value = "Re: your Q4 pipeline";
   $("body").value = "Hi Jane,\n\nI saw that your team is hiring three more sales reps this quarter. We clean lead lists before every campaign so that reps stop wasting calls on dead contacts.\n\nWorth a 15 minute call next week?\n\nBest,\nTom";
   $("role").value = "Head of Sales";
-  track("sample");
-});
+}
+function showRecorded() {
+  track("recorded");
+  $("country").value = "US"; $("atype").value = "named"; renderLegal();
+  fillSample();
+  const subject = $("subject").value, body = $("body").value;
+  const { c, verdict } = current();
+  const checks = evaluate(RECORDED.found, c, subject, body);
+  const fails = checks.filter((x) => x.state === "fail");
+  const fixable = fails.filter((f) => f.key !== "relevance");
+  render(c, verdict, checks, fails, fixable.length ? assemble(subject, body, fixable, RECORDED.found.language) : "", RECORDED.found,
+    `This is a recorded answer from ${RECORDED.model} on the sample draft, saved on ${RECORDED.date}. Nothing was downloaded. To check your own draft, paste it above and press "Check my draft" on a computer.`);
+}
+
+$("run").addEventListener("click", run);
+$("recorded").addEventListener("click", showRecorded);
+$("sample").addEventListener("click", () => { fillSample(); track("sample"); });
 $("want").addEventListener("click", () => {
   track("want-teams");
   $("want").disabled = true;
   $("want").textContent = "Noted, thank you";
   $("want-note").innerHTML = 'Counted. To hear when it is ready, or to tell me what your team needs, write to <a href="https://x.com/phaz_dev" rel="noopener" target="_blank">@phaz_dev</a>.';
 });
-if (!navigator.gpu) status("This browser has no WebGPU. You can still see the legal verdict above, but the draft check needs a recent Chrome, Edge or Safari on a computer.");
+if (!navigator.gpu) status("This browser has no WebGPU, so the model cannot run here. You can still see the legal verdict above, or press \"See a recorded example\".");
 
 // exposed for testing in the console
 window.coldproof = { extractPrompt, evaluate, assemble, SCHEMA, PHRASES };
