@@ -3,9 +3,9 @@ globalThis.window = globalThis;
 require("../coldcheck/data.js");
 const NEEDS = { US: ["sender", "subject", "adlabel", "postal", "optout"], UK: ["sender", "optout"], CA: ["relevance", "sender", "optout"], AU: ["relevance", "sender", "optout"],
   FR: ["relevance", "optout"], SE: ["optout"], NL: ["sender", "optout"], BE: ["optout"], IE: ["optout"], FI: ["adlabel", "sender", "optout"], NO: [], PT: ["sender", "optout"],
-  DE: [], ES: [], IT: [], DK: [], AT: [], PL: [], CZ: ["adlabel", "sender", "optout"], CH: ["sender", "optout"], EE: ["sender", "optout"], LV: ["optout"], MT: ["sender", "optout"], LU: ["sender", "optout"] };
+  DE: [], ES: [], IT: [], DK: [], AT: [], PL: [], CZ: ["adlabel", "sender", "optout"], CH: ["sender", "optout"], EE: ["sender", "optout"], LV: ["optout"], MT: ["sender", "optout"], LU: ["sender", "optout"], SK: ["sender", "optout"] };
 const LANG = { US: "English", UK: "English", CA: "English", AU: "English", IE: "English", DE: "German", AT: "German", CH: "German", FR: "French", BE: "French", ES: "Spanish", IT: "Italian",
-  NL: "Dutch", SE: "Swedish", DK: "Danish", NO: "Norwegian", FI: "Finnish", PL: "Polish", CZ: "Czech", PT: "Portuguese", EE: "Estonian", LV: "Latvian", MT: "English", LU: "French" };
+  NL: "Dutch", SE: "Swedish", DK: "Danish", NO: "Norwegian", FI: "Finnish", PL: "Polish", CZ: "Czech", PT: "Portuguese", EE: "Estonian", LV: "Latvian", MT: "English", LU: "French", SK: "Slovak" };
 const missing = globalThis.RULES.filter((r) => !NEEDS[r.code]).map((r) => r.code);
 if (missing.length) throw new Error("Add NEEDS for: " + missing.join(", "));
 const out = globalThis.RULES.map((r) => ({ code: r.code, name: r.name, lang: LANG[r.code], named: r.named, generic: r.generic, personal: r.personal, needs: NEEDS[r.code],

@@ -384,6 +384,28 @@ window.COUNTRIES = [
     "checked": "2026-10-11"
   },
   {
+    "code": "SK",
+    "name": "Slovakia",
+    "lang": "Slovak",
+    "named": "cond",
+    "generic": "cond",
+    "personal": "cond",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Section 116(3) of the Electronic Communications Act requires prior provable consent for marketing email. Section 116(15) lifts that requirement when the email goes to published contact details of a legal person or a sole trader. Every email must let the recipient refuse further messages easily and free of charge, and must show the sender's identity and an address for asking to stop.",
+    "must": [
+      "Write only to contact details the company or sole trader has published, for example on its website",
+      "Offer a simple, free way to refuse further emails in every message",
+      "Show who you are and an address where the recipient can ask you to stop",
+      "Private individuals need prior consent, which you must be able to prove"
+    ],
+    "source": "Zákon č. 452/2021 Z. z. o elektronických komunikáciách, § 116 (Slov-Lex, version in force from 18 Aug 2026)",
+    "url": "https://www.slov-lex.sk/ezbierky/pravne-predpisy/SK/ZZ/2021/452/",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "ES",
     "name": "Spain",
     "lang": "Spanish",
