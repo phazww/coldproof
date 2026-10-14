@@ -1,6 +1,6 @@
 # Coldproof
 
-Check a cold email draft against the law of the recipient's country. An open-weight model runs in your browser through WebGPU, reads the draft and reports what it contains, quoting the exact words. The page compares that with checked rules for 26 countries and returns the missing pieces and a fixed version. The draft never leaves your machine.
+Check a cold email draft against the law of the recipient's country. An open-weight model runs in your browser through WebGPU, reads the draft and reports what it contains, quoting the exact words. The page compares that with checked rules for 27 countries and returns the missing pieces and a fixed version. The draft never leaves your machine.
 
 Live: https://phazww.github.io/coldproof/
 

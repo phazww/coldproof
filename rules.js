@@ -86,6 +86,27 @@ window.COUNTRIES = [
     "checked": "2026-10-10"
   },
   {
+    "code": "HR",
+    "name": "Croatia",
+    "lang": "Croatian",
+    "named": "unknown",
+    "generic": "ok",
+    "personal": "consent",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Article 50(1) of the Electronic Communications Act requires the end user's prior consent for marketing email, but paragraph 4 says that rule does not apply to marketing sent to legal persons. Paragraph 3 applies to everyone: the sender's identity must not be hidden, and every email needs a valid address or number where the recipient can ask, free of charge, to stop.",
+    "must": [
+      "Do not hide or misrepresent who the email is from",
+      "Give a valid email address or number where the recipient can ask you to stop, free of charge",
+      "Existing customers: allowed for your own similar products if they could object free of charge at collection and in every message"
+    ],
+    "source": "Zakon o elektroničkim komunikacijama, NN 76/22, članak 50 (Narodne novine, official gazette)",
+    "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_76_1116.html",
+    "checked": "2026-10-14"
+  },
+  {
     "code": "CZ",
     "name": "Czech Republic",
     "lang": "Czech",
