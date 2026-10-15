@@ -327,6 +327,28 @@ window.COUNTRIES = [
     "checked": "2026-10-10"
   },
   {
+    "code": "JP",
+    "name": "Japan",
+    "lang": "Japanese",
+    "named": "cond",
+    "generic": "cond",
+    "personal": "cond",
+    "needs": [
+      "sender",
+      "optout"
+    ],
+    "rule": "Article 3 of the Act on Regulation of Transmission of Specified Electronic Mail is opt-in: marketing email may only go to people who agreed to it, with exceptions. The ones that matter for cold email: an organisation or business that has published its email address itself, someone who gave you their address (a business card, for example), and someone you already do business with. Every email must show who sends it and an address for refusing further mail, and a refusal must be respected.",
+    "must": [
+      "Write only to an address the company or business owner published itself, unless one of the other exceptions applies",
+      "Show the sender's name and an email address where the recipient can refuse further mail",
+      "Stop sending after a refusal",
+      "Keep a record of consent when you rely on it"
+    ],
+    "source": "特定電子メールの送信の適正化等に関する法律 (Act No. 26 of 2002), articles 3 and 4 (e-Gov Laws)",
+    "url": "https://laws.e-gov.go.jp/law/414AC0100000026",
+    "checked": "2026-10-15"
+  },
+  {
     "code": "LV",
     "name": "Latvia",
     "lang": "Latvian",
