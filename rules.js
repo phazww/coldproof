@@ -486,6 +486,29 @@ window.COUNTRIES = [
     "checked": "2026-10-11"
   },
   {
+    "code": "SG",
+    "name": "Singapore",
+    "lang": "English",
+    "named": "ok",
+    "generic": "ok",
+    "personal": "ok",
+    "needs": [
+      "adlabel",
+      "sender",
+      "optout"
+    ],
+    "rule": "The Spam Control Act is an opt-out law: no prior consent is needed, for companies or individuals. Its requirements apply to unsolicited commercial email sent in bulk, meaning more than 100 similar messages in 24 hours, 1,000 in 30 days or 10,000 in a year. Those emails must carry <ADV> before the subject, an unsubscribe email address with a statement in English, and a working contact, and unsubscribe requests must be honoured within 10 business days.",
+    "must": [
+      "When you send in bulk, start the subject with <ADV> and keep the subject truthful",
+      "Include an email address for unsubscribe requests, with a clear statement in English that it can be used for that",
+      "Give an accurate email address or phone number where you can be contacted, and do not falsify headers",
+      "Stop within 10 business days after an unsubscribe request, and keep that address working for at least 30 days"
+    ],
+    "source": "Spam Control Act 2007, sections 5 to 7 and 11 (Singapore Statutes Online)",
+    "url": "https://sso.agc.gov.sg/Act/SCA2007",
+    "checked": "2026-10-15"
+  },
+  {
     "code": "SK",
     "name": "Slovakia",
     "lang": "Slovak",
